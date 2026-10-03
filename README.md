@@ -3,6 +3,12 @@
 
 A responsive Next.js web app for one campus Toto, three stops, and permanent passenger boarding records. Dark, minimal styling inspired by CRED.
 
+## Live application
+
+[Open Lawazia](https://vibe-1-nexus-titans.vercel.app)
+
+No installation is needed. Create a Student or Employee account, or sign in with an existing account. The app runs on Vercel and stores its records in MongoDB Atlas. Rider access is provisioned privately; no passwords are published.
+
 ## Run the working local demo
 Requires Node.js 22+ and npm.
 ```sh
