@@ -27,7 +27,7 @@ The demo includes two competing requests, an accepted upcoming ride, and complet
 2. In Database Access, create an application database user with read/write access to this app's database. Choose a private password.
 3. Add the IP address of your local machine in Network Access. For hosting, configure access appropriate to your hosting provider.
 4. Choose **Connect → Drivers → Node.js**, and copy the connection URI. URL-encode special characters in its username/password.
-5. Copy `.env.example` to `.env.local`. Set `MONGODB_URI`, `MONGODB_DB`, `APP_ORIGIN`, and private rider credentials. `APP_ORIGIN` must match the browser origin exactly, e.g. `http://127.0.0.1:3000`.
+5. Copy `.env.example` to `.env.local`. Set `MONGODB_URI`, `MONGODB_DB`, `APP_ORIGIN`, and private rider credentials. If the URI contains `<db_password>`, set `MONGODB_PASSWORD` to the raw database-user password; the app will encode it. `APP_ORIGIN` must match the browser origin exactly, e.g. `http://127.0.0.1:3000`.
 6. Run `npm run seed` once to create the rider, then `npm run dev`.
 7. Students and employees register through the app. Rider signup is intentionally unavailable.
 
@@ -78,7 +78,7 @@ gh repo create vibe-1-nexus-titans --public --source=. --remote=origin --push
 ```
 
 ## Deploy the web app
-Import the GitHub repository into a Next.js-compatible Node hosting service, such as Vercel. Add `MONGODB_URI`, `MONGODB_DB`, `SLOT_MINUTES`, and `APP_ORIGIN` in its environment settings. Set `APP_ORIGIN` to the deployed HTTPS URL. Leave `LOCAL_DEMO` unset. Provision the Atlas rider using the seed script locally. Build command: `npm run build`. The app uses the Node runtime because MongoDB requires TCP access.
+Import the GitHub repository into a Next.js-compatible Node hosting service, such as Vercel. Add `MONGODB_URI`, `MONGODB_PASSWORD` (when using a password placeholder), `MONGODB_DB`, `SLOT_MINUTES`, and `APP_ORIGIN` in its environment settings. Set `APP_ORIGIN` to the deployed HTTPS URL. Leave `LOCAL_DEMO` unset. Provision the Atlas rider using the seed script locally. Build command: `npm run build`. The app uses the Node runtime because MongoDB requires TCP access.
 
 ## Competition demo
 1. Login as student; request a future slot with Rohan and Ananya.

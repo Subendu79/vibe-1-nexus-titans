@@ -1,8 +1,9 @@
 import { MongoClient, type Db, type ClientSession } from 'mongodb';
 import type { User, Booking, Session, Vehicle, RateLimit } from './types';
+import {mongoUri} from './config';
 declare global { var lawaziaConnection: Promise<{client: MongoClient; db: Db}> | undefined; }
 async function connect() {
- const uri = process.env.MONGODB_URI;
+ const uri = mongoUri();
  if (!uri) throw new Error('Set MONGODB_URI in .env.local, or run npm run demo for a local database.');
  const client = new MongoClient(uri, {serverSelectionTimeoutMS: 10000, maxPoolSize: 10});
  try {
