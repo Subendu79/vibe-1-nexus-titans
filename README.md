@@ -27,7 +27,7 @@ The demo includes two competing requests, an accepted upcoming ride, and complet
 2. In Database Access, create an application database user with read/write access to this app's database. Choose a private password.
 3. Add the IP address of your local machine in Network Access. For hosting, configure access appropriate to your hosting provider.
 4. Choose **Connect → Drivers → Node.js**, and copy the connection URI. URL-encode special characters in its username/password.
-5. Copy `.env.example` to `.env.local`. Set `MONGODB_URI`, `MONGODB_DB`, `APP_ORIGIN`, and private rider credentials. `APP_ORIGIN` must match the browser origin exactly, e.g. `http://localhost:3000`.
+5. Copy `.env.example` to `.env.local`. Set `MONGODB_URI`, `MONGODB_DB`, `APP_ORIGIN`, and private rider credentials. `APP_ORIGIN` must match the browser origin exactly, e.g. `http://127.0.0.1:3000`.
 6. Run `npm run seed` once to create the rider, then `npm run dev`.
 7. Students and employees register through the app. Rider signup is intentionally unavailable.
 
