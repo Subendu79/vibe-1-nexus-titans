@@ -16,7 +16,7 @@
 
 ## About and maintainers
 
-Made and maintained by **Subendu Kundu and Hemant Kumar Rawani**. [Meet the team](https://vibe-1-nexus-titans.vercel.app/about).
+Made and maintained by **Subendu Kundu — Principal Engineer** and **Hemant Kumar Rawani — Lead Engineer**. [Meet the team](https://vibe-1-nexus-titans.vercel.app/about).
 
 ## Group passengers
 
@@ -238,3 +238,5 @@ Build with `npm run build` and run with `npm start`, or deploy to a Next.js-comp
 ---
 
 **Nexus Titans · Lawazia campus mobility**
+
+© 2026 Lawazia. All rights reserved.
