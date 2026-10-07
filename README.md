@@ -1,10 +1,12 @@
-# Lawazia · Campus Toto booking
+# Loop · Campus Toto booking
+
+**Small rides. Stronger connections.**
 
 **Built by Nexus Titans · `vibe-1-nexus-titans`**
 
 ## Open the live application
 
-### [Open Lawazia →](https://vibe-1-nexus-titans.vercel.app)
+### [Open Loop →](https://vibe-1-nexus-titans.vercel.app)
 
 **For teachers and evaluators:** click the link above to use the working application. No download, Node.js installation, MongoDB setup, or shared Wi-Fi is required. The application runs on Vercel and stores its records in MongoDB Atlas.
 
@@ -18,13 +20,15 @@
 
 Made and maintained by **Subendu Kundu — Principal Engineer** and **Hemant Kumar Rawani — Lead Engineer**. [Meet the team](https://vibe-1-nexus-titans.vercel.app/about).
 
+> Existing rider email, passwords, accounts, and trip records continue to work after the Loop rebrand. The database name and existing account email addresses retain their original identifiers.
+
 ## Group passengers
 
 Group requests can include registered accounts and manually named guest passengers. Guests do not need to sign in. Their Boarded or Missed results stay in the trip record and rider log. Guest entries are not automatically linked to accounts or personal histories.
 
 ## What the project does
 
-Lawazia has one campus Toto and three fixed stops: **College**, **Railway Station**, and **Office**. Students and employees request solo or group rides. The rider accepts a request, marks each passenger **Boarded** or **Missed**, and completes the trip. Passenger histories and the rider's trip log retain the boarding results.
+Loop has one campus Toto and three fixed stops: **College**, **Railway Station**, and **Office**. Students and employees request solo or group rides. The rider accepts a request, marks each passenger **Boarded** or **Missed**, and completes the trip. Passenger histories and the rider's trip log retain the boarding results.
 
 There are no GPS, map, fare, or multiple-vehicle features. The interface combines warm white surfaces, charcoal campus scenes and orange accents, with interactive stop exploration, route shortcuts, trip search and responsive layouts.
 
@@ -237,6 +241,6 @@ Build with `npm run build` and run with `npm start`, or deploy to a Next.js-comp
 
 ---
 
-**Nexus Titans · Lawazia campus mobility**
+**Nexus Titans · Loop campus mobility**
 
-© 2026 Lawazia. All rights reserved.
+© 2026 Loop. All rights reserved.

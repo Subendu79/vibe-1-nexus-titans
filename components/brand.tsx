@@ -1,5 +1,5 @@
 import Link from 'next/link';
-export function Brand(){return <Link href="/" className="brand" aria-label="Lawazia home"><span className="brand-mark">L<span/></span><span>lawazia<span className="brand-sub">CAMPUS MOBILITY</span></span></Link>;}
+export function Brand(){return <Link href="/" className="brand" aria-label="Loop home"><span className="brand-mark">L<span/></span><span>Loop<span className="brand-sub">CAMPUS MOBILITY</span></span></Link>;}
 export function TotoArt(){return <svg className="toto-art" viewBox="0 0 500 300" fill="none" aria-label="Illustration of the campus Toto" role="img">
  <defs><linearGradient id="body" x1="170" y1="70" x2="350" y2="240" gradientUnits="userSpaceOnUse"><stop stopColor="#f4a074"/><stop offset="1" stopColor="#b74727"/></linearGradient><linearGradient id="roof" x1="100" y1="60" x2="360" y2="130"><stop stopColor="#ffffff"/><stop offset="1" stopColor="#bccce6"/></linearGradient><linearGradient id="window" x1="200" y1="90" x2="300" y2="200"><stop stopColor="#b3d9ef" stopOpacity=".6"/><stop offset="1" stopColor="#557d9e"/></linearGradient><radialGradient id="glow"><stop stopColor="#f2956c" stopOpacity=".14"/><stop offset="1" stopColor="#f2956c" stopOpacity="0"/></radialGradient></defs>
  <ellipse cx="257" cy="244" rx="165" ry="25" fill="url(#glow)"/>
