@@ -16,6 +16,12 @@
 
 > The live app uses the accounts registered on the Atlas version. The local demo accounts listed near the bottom of this README do **not** work on the live app. No live passwords or database credentials are published here.
 
+## Loop Interactive
+
+**Inspiring mobility and technology.**
+
+Loop is a campus mobility app by **Loop Interactive**, built by Nexus Titans.
+
 ## About and maintainers
 
 Made and maintained by **Subendu Kundu — Principal Engineer** and **Hemant Kumar Rawani — Lead Engineer**. [Meet the team](https://vibe-1-nexus-titans.vercel.app/about).
@@ -243,4 +249,4 @@ Build with `npm run build` and run with `npm start`, or deploy to a Next.js-comp
 
 **Nexus Titans · Loop campus mobility**
 
-© 2026 Loop. All rights reserved.
+© 2026 Loop Interactive. All rights reserved.
