@@ -14,11 +14,15 @@
 
 > The live app uses the accounts registered on the Atlas version. The local demo accounts listed near the bottom of this README do **not** work on the live app. No live passwords or database credentials are published here.
 
+## About and maintainers
+
+Made and maintained by **Subendu Kundu and Hemant Kumar Rawani**. [Meet the team](https://vibe-1-nexus-titans.vercel.app/about).
+
 ## What the project does
 
 Lawazia has one campus Toto and three fixed stops: **College**, **Railway Station**, and **Office**. Students and employees request solo or group rides. The rider accepts a request, marks each passenger **Boarded** or **Missed**, and completes the trip. Passenger histories and the rider's trip log retain the boarding results.
 
-There are no GPS, map, fare, or multiple-vehicle features. The interface uses a dark, minimalist design inspired by CRED.
+There are no GPS, map, fare, or multiple-vehicle features. The interface combines warm white surfaces, charcoal campus scenes and orange accents, with interactive stop exploration, route shortcuts, trip search and responsive layouts.
 
 ## Teacher's end-to-end testing guide
 
