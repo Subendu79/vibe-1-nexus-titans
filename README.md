@@ -18,6 +18,10 @@
 
 Made and maintained by **Subendu Kundu and Hemant Kumar Rawani**. [Meet the team](https://vibe-1-nexus-titans.vercel.app/about).
 
+## Group passengers
+
+Group requests can include registered accounts and manually named guest passengers. Guests do not need to sign in. Their Boarded or Missed results stay in the trip record and rider log. Guest entries are not automatically linked to accounts or personal histories.
+
 ## What the project does
 
 Lawazia has one campus Toto and three fixed stops: **College**, **Railway Station**, and **Office**. Students and employees request solo or group rides. The rider accepts a request, marks each passenger **Boarded** or **Missed**, and completes the trip. Passenger histories and the rider's trip log retain the boarding results.

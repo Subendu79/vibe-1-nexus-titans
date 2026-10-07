@@ -19,11 +19,21 @@ export async function createBooking(user:PublicUser,input:Record<string,unknown>
  if(!Number.isFinite(startsAt.getTime())||startsAt.getTime()<=Date.now()||startsAt.getTime()>Date.now()+90*24*60*60*1000) throw new AppError('Choose a future time within the next 90 days.');
  if(startsAt.getTime()%duration!==0) throw new AppError('Choose a time on a ' + slotMinutes() + '-minute slot.');
  if(!Array.isArray(input.passengerIds)||input.passengerIds.some(id=>typeof id!=='string')||input.passengerIds.length>30) throw new AppError('Choose valid passengers.');
+ const rawGuests = input.guestPassengers === undefined ? [] : input.guestPassengers;
+ if(!Array.isArray(rawGuests)||rawGuests.length>30) throw new AppError('Choose valid manual passengers.');
+ const guestNames = rawGuests.map(guest=>{
+  if(!guest||typeof guest!=='object'||Array.isArray(guest)||typeof guest.name!=='string') throw new AppError('Enter a full name for each manual passenger.');
+  const name=guest.name.trim().replace(/\s+/g,' ');
+  if(name.length<2||name.length>80||/[\u0000-\u001f\u007f]/.test(guest.name)) throw new AppError('Manual passenger names must be between 2 and 80 characters.');
+  return name;
+ });
  const ids = [...new Set([user._id,...input.passengerIds as string[]])];
+ if(ids.length+guestNames.length>31) throw new AppError('Add no more than 30 other passengers.');
  return withVehicle(async (db,session) => {
   const people = await db.collection<User>('users').find({_id:{$in:ids},role:{$in:['student','employee']}},{session}).toArray();
   if(people.length!==ids.length) throw new AppError('A selected passenger is unavailable.');
   const passengers:Passenger[] = ids.map(id=>{const person=people.find(p=>p._id===id)!; return {userId:id,name:person.name,email:person.email,status:'pending',markedAt:null};});
+  passengers.push(...guestNames.map(name=>({userId:'guest:'+randomUUID(),name,email:'',kind:'guest' as const,status:'pending' as const,markedAt:null})));
   const endsAt = new Date(startsAt.getTime()+duration);
   const conflict = await overlapping(db,session,startsAt,endsAt);
   const booking:Booking = {_id:randomUUID(),requesterId:user._id,requesterName:user.name,origin:input.origin as Location,destination:input.destination as Location,startsAt,endsAt,status:conflict?'conflict':'pending',passengers,riderId:null,riderName:null,conflictWith:conflict?._id||null,createdAt:new Date(),acceptedAt:null,pickupAt:null,completedAt:null};

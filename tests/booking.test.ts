@@ -77,3 +77,16 @@ test('passwords are hashed; sessions expire and logout invalidates them',async()
  await destroySession(session.token);assert.equal(await userForSession(session.token),null);
  const expiry=await createSession(student._id);await db.collection<Session>('sessions').updateOne({_id:(await import('../lib/auth')).tokenHash(expiry.token)},{$set:{expiresAt:new Date(0)}});assert.equal(await userForSession(expiry.token),null);
 });
+test('manual passengers have independent identities and permanent boarding records',async()=>{
+ const booking=await createBooking(student,{...request(future(20),[second._id]),guestPassengers:[{name:'  Guest   Visitor ',userId:employee._id,email:employee.email},{name:'Guest Visitor'}]});
+ const guests=booking.passengers.filter(p=>p.kind==='guest');assert.equal(guests.length,2);assert.equal(guests[0].name,'Guest Visitor');assert.notEqual(guests[0].userId,guests[1].userId);assert.ok(guests.every(p=>p.userId.startsWith('guest:')&&p.email===''));
+ await acceptBooking(rider,booking._id);await startTrip(rider,booking._id);
+ for(const p of booking.passengers)await markPassenger(rider,booking._id,p.userId,p.userId===guests[1].userId?'missed':'boarded');
+ await completeTrip(rider,booking._id);
+ for(const person of [student,second,rider]){const saved=(await listBookings(person)).find(b=>b._id===booking._id);assert.equal(saved?.status,'completed');assert.deepEqual(saved?.passengers.filter(p=>p.kind==='guest').map(p=>p.status),['boarded','missed']);}
+ assert.ok(!(await listBookings(employee)).some(b=>b._id===booking._id));
+});
+test('manual passenger input rejects invalid names and excessive groups',async()=>{
+ for(const guestPassengers of [[{name:'x'}],[{name:'a'.repeat(81)}],[{name:'Bad\u0000Name'}],[null],['Visitor'],{},Array.from({length:31},()=>({name:'Visitor'}))])await assert.rejects(()=>createBooking(student,{...request(future(22)),guestPassengers}));
+ await assert.rejects(()=>createBooking(student,{...request(future(22),[second._id]),guestPassengers:Array.from({length:30},()=>({name:'Visitor'}))}),/30 other passengers/);
+});

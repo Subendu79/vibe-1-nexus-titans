@@ -5,7 +5,7 @@ export type BookingStatus = 'pending' | 'accepted' | 'conflict' | 'in_progress' 
 export type BoardingStatus = 'pending' | 'boarded' | 'missed';
 export interface User { _id: string; name: string; email: string; role: Role; passwordHash: string; createdAt: Date; }
 export type PublicUser = Pick<User, '_id' | 'name' | 'email' | 'role'>;
-export interface Passenger { userId: string; name: string; email: string; status: BoardingStatus; markedAt: Date | null; }
+export interface Passenger { userId: string; name: string; email: string; kind?: 'guest'; status: BoardingStatus; markedAt: Date | null; }
 export interface Booking {
  _id: string; requesterId: string; requesterName: string; origin: Location; destination: Location;
  startsAt: Date; endsAt: Date; status: BookingStatus; passengers: Passenger[];
