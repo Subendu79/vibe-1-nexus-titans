@@ -1,14 +1,14 @@
 import { MongoClient, type Db, type ClientSession } from 'mongodb';
 import type { User, Booking, Session, Vehicle, RateLimit } from './types';
 import {mongoUri} from './config';
-declare global { var lawaziaConnection: Promise<{client: MongoClient; db: Db}> | undefined; }
+declare global { var loopConnection: Promise<{client: MongoClient; db: Db}> | undefined; }
 async function connect() {
  const uri = mongoUri();
  if (!uri) throw new Error('Set MONGODB_URI in .env.local, or run npm run demo for a local database.');
  const client = new MongoClient(uri, {serverSelectionTimeoutMS: 10000, maxPoolSize: 10});
  try {
   await client.connect();
-  const db = client.db(process.env.MONGODB_DB || 'lawazia');
+  const db = client.db(process.env.MONGODB_DB || 'loop');
   await db.collection<User>('users').createIndex({email:1}, {unique:true});
   await db.collection<Session>('sessions').createIndex({expiresAt:1}, {expireAfterSeconds:0});
   await db.collection<Booking>('bookings').createIndexes([
@@ -20,8 +20,8 @@ async function connect() {
  } catch (error) { await client.close(); throw error; }
 }
 export async function database() {
- if (!global.lawaziaConnection) global.lawaziaConnection = connect().catch(error => {global.lawaziaConnection=undefined; throw error;});
- return global.lawaziaConnection;
+ if (!global.loopConnection) global.loopConnection = connect().catch(error => {global.loopConnection=undefined; throw error;});
+ return global.loopConnection;
 }
 // Every schedule mutation writes the same vehicle document before reading.
 // Concurrent transactions conflict on that write and are retried by withTransaction,

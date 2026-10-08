@@ -9,7 +9,7 @@ import {createBooking,acceptBooking,startTrip,markPassenger,completeTrip,listBoo
 import {type PublicUser,type Booking,type User,type Session} from '../lib/types';
 let replica:MongoMemoryReplSet|undefined;
 let student:PublicUser,second:PublicUser,third:PublicUser,employee:PublicUser,rider:PublicUser;
-const databaseName='lawazia_test_'+randomUUID().replaceAll('-','');
+const databaseName='loop_test_'+randomUUID().replaceAll('-','');
 before(async()=>{
  if(!process.env.MONGODB_URI){replica=await MongoMemoryReplSet.create({binary:{version:'7.0.24',downloadDir:resolve('.local/mongodb-binaries')},replSet:{count:1,storageEngine:'wiredTiger'}});process.env.MONGODB_URI=replica.getUri();}
  process.env.MONGODB_DB=databaseName;
@@ -19,7 +19,7 @@ before(async()=>{
  employee=await createAccount({name:'Test Employee',email:'employee@test.example',password:'TestPassword!2026',role:'employee'});
  rider=await createAccount({name:'Test Rider',email:'rider@test.example',password:'TestPassword!2026'},'rider');
 });
-after(async()=>{const{client,db}=await database();await db.dropDatabase();await client.close();global.lawaziaConnection=undefined;if(replica)await replica.stop();});
+after(async()=>{const{client,db}=await database();await db.dropDatabase();await client.close();global.loopConnection=undefined;if(replica)await replica.stop();});
 const future=(offset=0)=>new Date(Math.ceil((Date.now()+86400000)/1800000)*1800000+offset*1800000).toISOString();
 const request=(startsAt:string,passengerIds:string[]=[])=>({origin:'College',destination:'Office',startsAt,passengerIds});
 test('same time: concurrent accepts reserve exactly one ride and flag the other',async()=>{

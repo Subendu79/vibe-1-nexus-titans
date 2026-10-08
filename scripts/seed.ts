@@ -2,7 +2,7 @@ import {database} from '../lib/db';
 import {createAccount} from '../lib/auth';
 import type {User} from '../lib/types';
 export async function seedRider() {
- const email=(process.env.RIDER_EMAIL||'rider@lawazia.org').toLowerCase();
+ const email=(process.env.RIDER_EMAIL||'rider@loop.org').toLowerCase();
  const password=process.env.RIDER_PASSWORD;
  if(!password||password.length<10) throw new Error('Set RIDER_PASSWORD to at least 10 characters in .env.local.');
  const {db}=await database();

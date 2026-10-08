@@ -6,7 +6,7 @@ import {AppError, requireString} from './errors';
 import {publicUser, type User, type Session, type PublicUser, type RateLimit, type Role} from './types';
 function deriveKey(password: string, salt: string) { return new Promise<Buffer>((resolve,reject) => scryptCallback(password,salt,64,HASH_OPTIONS,(error,key) => error ? reject(error) : resolve(key))); }
 const HASH_OPTIONS = {N:32768, r:8, p:3, maxmem:64*1024*1024};
-export const SESSION_COOKIE = 'lawazia_session';
+export const SESSION_COOKIE = 'loop_session';
 export function tokenHash(token: string) { return createHash('sha256').update(token).digest('hex'); }
 export async function hashPassword(password: string) {
  const salt = randomBytes(16).toString('hex');

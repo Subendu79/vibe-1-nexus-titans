@@ -12,7 +12,7 @@
 
 - [Create a Student or Employee account](https://vibe-1-nexus-titans.vercel.app/signup)
 - [Sign in to an existing account](https://vibe-1-nexus-titans.vercel.app/login)
-- For **Rider access**, obtain the application password privately from Nexus Titans. The rider email is `rider@lawazia.org`. Rider registration is intentionally unavailable on the public signup page.
+- For **Rider access**, obtain the application password privately from Nexus Titans. The rider email is `rider@loop.org`. Rider registration is intentionally unavailable on the public signup page.
 
 > The live app uses the accounts registered on the Atlas version. The local demo accounts listed near the bottom of this README do **not** work on the live app. No live passwords or database credentials are published here.
 
@@ -26,7 +26,7 @@ Loop is a campus mobility app by **Loop Interactive**, built by Nexus Titans.
 
 Made and maintained by **Subendu Kundu — Principal Engineer** and **Hemant Kumar Rawani — Lead Engineer**. [Meet the team](https://vibe-1-nexus-titans.vercel.app/about).
 
-> Existing rider email, passwords, accounts, and trip records continue to work after the Loop rebrand. The database name and existing account email addresses retain their original identifiers.
+> Rider sign-in uses `rider@loop.org` with the existing password. Passenger accounts and trip records are preserved. Private hosting settings connect to the existing Atlas data.
 
 ## Group passengers
 
@@ -208,11 +208,11 @@ The following accounts work **only in the local demo**, all with password `Campu
 
 | Role | Email |
 | --- | --- |
-| Student | student@lawazia.demo |
-| Employee | employee@lawazia.demo |
-| Rider | rider@lawazia.demo |
-| Group member | rohan@lawazia.demo |
-| Group member | ananya@lawazia.demo |
+| Student | student@loop.demo |
+| Employee | employee@loop.demo |
+| Rider | rider@loop.demo |
+| Group member | rohan@loop.demo |
+| Group member | ananya@loop.demo |
 
 The local demo includes sample requests and history. These credentials are not live app credentials.
 
